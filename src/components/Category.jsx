@@ -5,7 +5,7 @@ import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import {Row , Col } from 'react-bootstrap';
 import VideoCard from './VideoCard'
-import { addCategory, getAllCategory, getAVideo, updateCategory } from '../services/allAPI';
+import { addCategory, getAllCategory, getAVideo, updateCategory, deleteCategory } from '../services/allAPI';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -62,6 +62,12 @@ const dragover = (e)=>{
   console.log('inside dragover');
 }
 
+ //function to delete category
+ const handleDeleteCategory = async(id)=>{
+  await deleteCategory(id)
+  getAllCategory()
+}
+
 const videoDrop =async(e, categoryId)=>{
   console.log(`dropped inside the categoryId ${categoryId}`);
   // to get videoID that is send from videocard component
@@ -84,6 +90,8 @@ const videoDrop =async(e, categoryId)=>{
   getAllCategory()
 }
 
+ 
+
   useEffect(()=>{
     getallCategory()
   },[])
@@ -99,7 +107,7 @@ const videoDrop =async(e, categoryId)=>{
       <div className='ms-5 mb-3 border border-secondary rounded p-3'>
       <div className="d-flex justify-content-between align-items-center" droppable onDragOver={(e)=>dragover(e)} onDrop={(e)=>videoDrop(e,item?.id)}>
         <h6>{item?.categoryName}</h6>
-        <button className='btn btn-danger'><i class="fa-solid fa-trash-can fa-sm"></i></button>    
+        <button onClick={()=>handleDeleteCategory(item?.id)} className='btn btn-danger'><i class="fa-solid fa-trash-can fa-sm"></i></button>    
       </div>
       <Row>
         <Col sm={6}>
