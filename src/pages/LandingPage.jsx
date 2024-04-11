@@ -22,7 +22,7 @@ function LandingPage() {
         </Col>
         <Col></Col>
         <Col lg={5}>
-          <img src="https://media.tenor.com/nTbpZveJwKEAAAAC/music-beats.gif" alt="no image" width={"500px"} height={"500px"}/>
+          <img src="https://media.tenor.com/nTbpZveJwKEAAAAC/music-beats.gif" alt="no image" width={"500px"} height={"500px"} style={{borderRadius:'50%'}}/>
         </Col>
       </Row>
       <div className='mt-5 mb-5 d-flex align-items-center justify-content-center flex-column'>
